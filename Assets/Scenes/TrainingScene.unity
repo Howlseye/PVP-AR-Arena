@@ -227,7 +227,7 @@ Canvas:
   m_GameObject: {fileID: 102919728}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1750,7 +1750,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 92.69992, y: -16.600098}
+  m_AnchoredPosition: {x: 25, y: -16.600098}
   m_SizeDelta: {x: 54.4493, y: 55.8133}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1382429815
@@ -2683,7 +2683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 63.000023, y: 75.999886}
+  m_AnchoredPosition: {x: 74.7, y: 75.999886}
   m_SizeDelta: {x: 54.4493, y: 55.8133}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1673856577
@@ -3095,21 +3095,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bff204c0361bf4a4c851be90eee8d72b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ARCharacterSelectionManager
+  arSession: {fileID: 0}
+  arCameraBackground: {fileID: 0}
+  prototypeMap: {fileID: 0}
   trackedImageManager: {fileID: 2079107457}
   warriorPrefab: {fileID: 2175464129602976616, guid: a83fc452045042443a6262d259de78ef, type: 3}
   assassinPrefab: {fileID: 2818125851712715459, guid: a9fdffe8ec9572849b2d731cff05eb57, type: 3}
   guardianPrefab: {fileID: 8382816134510813176, guid: 91e3cb3137f7288408ab13523b3edd93, type: 3}
+  trainingDummyPrefab: {fileID: 4697017240656324050, guid: 0331b169005eb1d469455efaa6b9024a, type: 3}
   characterScale: 0.1
   selectionPanel: {fileID: 1653451902}
   characterNameText: {fileID: 1502017358}
   selectButton: {fileID: 1480883188}
   combatPanel: {fileID: 70775010}
   virtualJoystick: {fileID: 1067869933}
+  lobbyPanel: {fileID: 0}
+  lobbyStatusText: {fileID: 0}
+  startBattleButton: {fileID: 0}
   warriorActionPanel: {fileID: 2124053625}
   assassinActionPanel: {fileID: 750917353}
   guardianActionPanel: {fileID: 590740743}
   backButton: {fileID: 1673856577}
   menuButton: {fileID: 1382429815}
+  currentDetectedCharacter: 
+  isMultiplayerLobbyPhase: 0
 --- !u!1 &2124053625
 GameObject:
   m_ObjectHideFlags: 0

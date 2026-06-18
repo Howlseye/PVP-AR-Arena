@@ -1726,6 +1726,8 @@ GameObject:
   - component: {fileID: 740767653}
   - component: {fileID: 740767652}
   - component: {fileID: 740767651}
+  - component: {fileID: 740767654}
+  - component: {fileID: 740767655}
   m_Layer: 0
   m_Name: NetworkManager
   m_TagString: Untagged
@@ -1751,7 +1753,8 @@ MonoBehaviour:
     NetworkTransport: {fileID: 740767652}
     PlayerPrefab: {fileID: 236484087281935070, guid: 1430d4903ece729499edd7174d4ddd00, type: 3}
     Prefabs:
-      NetworkPrefabsLists: []
+      NetworkPrefabsLists:
+      - {fileID: 11400000, guid: a0da541a9df15314089b9db5df361d97, type: 2}
     TickRate: 30
     ClientConnectionBufferTimeout: 10
     ConnectionApproval: 0
@@ -1820,6 +1823,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &740767654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740767650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ba2170a9df64c6428fa6da466a5f9da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NetworkDebugHelper
+--- !u!114 &740767655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740767650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3df730b1284840d478397cb6803a8479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NetworkCharacterSpawner
+  warriorPrefab: {fileID: 2175464129602976616, guid: a83fc452045042443a6262d259de78ef, type: 3}
+  assassinPrefab: {fileID: 2818125851712715459, guid: a9fdffe8ec9572849b2d731cff05eb57, type: 3}
+  guardianPrefab: {fileID: 8382816134510813176, guid: 91e3cb3137f7288408ab13523b3edd93, type: 3}
 --- !u!1 &804888502
 GameObject:
   m_ObjectHideFlags: 0

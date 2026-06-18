@@ -6,6 +6,11 @@ public class ARNetworkPlayer : NetworkBehaviour
     // Make it accessible locally
     public static ARNetworkPlayer LocalPlayer;
 
+    [Header("Character Prefabs (Assign in Inspector)")]
+    [SerializeField] private GameObject warriorPrefab;
+    [SerializeField] private GameObject assassinPrefab;
+    [SerializeField] private GameObject guardianPrefab;
+
     public override void OnNetworkSpawn()
     {
         if (IsOwner)
@@ -15,33 +20,35 @@ public class ARNetworkPlayer : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
-    public void RequestSpawnCharacterServerRpc(int characterIndex, ServerRpcParams rpcParams = default)
+    [ServerRpc(RequireOwnership = false)]
+    public void RequestSpawnCharacterServerRpc(int characterIndex, Vector3 spawnPos, ServerRpcParams rpcParams = default)
     {
-        Debug.Log($"[ARNetworkPlayer] Server received request to spawn character {characterIndex} from client {rpcParams.Receive.SenderClientId}");
+        Debug.Log($"[ARNetworkPlayer] Server received spawn request: index={characterIndex}, client={rpcParams.Receive.SenderClientId}, pos={spawnPos}");
         
-        var prefabs = NetworkManager.Singleton.NetworkConfig.Prefabs.Prefabs;
         GameObject prefabToSpawn = null;
 
-        foreach (var p in prefabs)
-        {
-            if (characterIndex == 0 && (p.Prefab.name.Contains("Warrior") || p.Prefab.name.Contains("Character 1")))
-                prefabToSpawn = p.Prefab;
-            else if (characterIndex == 1 && (p.Prefab.name.Contains("Assassin") || p.Prefab.name.Contains("Character 2")))
-                prefabToSpawn = p.Prefab;
-            else if (characterIndex == 2 && (p.Prefab.name.Contains("Guardian") || p.Prefab.name.Contains("Character 3")))
-                prefabToSpawn = p.Prefab;
-        }
+        if (characterIndex == 0) prefabToSpawn = warriorPrefab;
+        else if (characterIndex == 1) prefabToSpawn = assassinPrefab;
+        else if (characterIndex == 2) prefabToSpawn = guardianPrefab;
 
         if (prefabToSpawn != null)
         {
-            var go = Instantiate(prefabToSpawn);
+            Debug.Log($"[ARNetworkPlayer] Spawning {prefabToSpawn.name} at {spawnPos}");
+            var go = Instantiate(prefabToSpawn, spawnPos, Quaternion.identity);
             var netObj = go.GetComponent<NetworkObject>();
-            netObj.SpawnWithOwnership(rpcParams.Receive.SenderClientId);
+            if (netObj != null)
+            {
+                netObj.SpawnWithOwnership(rpcParams.Receive.SenderClientId);
+                Debug.Log($"[ARNetworkPlayer] Character spawned successfully with ownership to client {rpcParams.Receive.SenderClientId}");
+            }
+            else
+            {
+                Debug.LogError("[ARNetworkPlayer] Spawned prefab has no NetworkObject component!");
+            }
         }
         else
         {
-            Debug.LogError("[ARNetworkPlayer] SpawnCharacterServerRpc: Prefab not found in NetworkManager!");
+            Debug.LogError($"[ARNetworkPlayer] Prefab for index {characterIndex} is NULL! Check Inspector references on ARNetworkPlayer prefab.");
         }
     }
 
@@ -53,13 +60,13 @@ public class ARNetworkPlayer : NetworkBehaviour
     }
 
     [ClientRpc]
-    private void StartBattleClientRpc()
+    public void StartBattleClientRpc()
     {
-        Debug.Log("[ARNetworkPlayer] Client received StartBattleClientRpc! Transitioning from Lobby to Combat...");
+        Debug.Log("[ARNetworkPlayer] Client received StartBattleClientRpc! Transitioning from Lobby to Character Selection...");
         
         if (ARCharacterSelectionManager.Instance != null)
         {
-            ARCharacterSelectionManager.Instance.TransitionToCombat();
+            ARCharacterSelectionManager.Instance.TransitionToSelectionPhase();
         }
         else
         {

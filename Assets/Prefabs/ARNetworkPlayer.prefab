@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5117735421836060749}
   - component: {fileID: 1313638549812319686}
+  - component: {fileID: 4238271425847871817}
   m_Layer: 0
   m_Name: ARNetworkPlayer
   m_TagString: Untagged
@@ -44,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 657005927
+  GlobalObjectIdHash: 263947078
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -53,7 +54,23 @@ MonoBehaviour:
   ActiveSceneSynchronization: 0
   SceneMigrationSynchronization: 0
   SpawnWithObservers: 1
-  DontDestroyWithOwner: 0
+  DontDestroyWithOwner: 1
   AutoObjectParentSync: 1
   SyncOwnerTransformWhenParented: 1
   AllowOwnerToParent: 0
+--- !u!114 &4238271425847871817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236484087281935070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8bc15b2adf9988489ffa700508bd6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ARNetworkPlayer
+  ShowTopMostFoldoutHeaderGroup: 1
+  warriorPrefab: {fileID: 2175464129602976616, guid: a83fc452045042443a6262d259de78ef, type: 3}
+  assassinPrefab: {fileID: 2818125851712715459, guid: a9fdffe8ec9572849b2d731cff05eb57, type: 3}
+  guardianPrefab: {fileID: 8382816134510813176, guid: 91e3cb3137f7288408ab13523b3edd93, type: 3}
