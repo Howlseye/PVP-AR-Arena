@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848409ee8ba454f42a5ddff137688a27, type: 3}
+  m_Name: ReferenceImageLibrary
+  m_EditorClassIdentifier: Unity.XR.ARSubsystems::UnityEngine.XR.ARSubsystems.XRReferenceImageLibrary
+  m_GuidLow: 4689731287424584476
+  m_GuidHigh: 3561852943136449936
+  m_DataStore:
+    m_Storage: []
+  m_Images:
+  - m_SerializedGuid:
+      m_GuidLow: 4961646683569429115
+      m_GuidHigh: 9190265039563684270
+    m_SerializedTextureGuid:
+      m_GuidLow: 5801788880057168297
+      m_GuidHigh: 7355095874892628873
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Warrior
+    m_Texture: {fileID: 2800000, guid: 499e71a9183f50848983eaafba8c1266, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5036598979303773723
+      m_GuidHigh: 3463409670371009952
+    m_SerializedTextureGuid:
+      m_GuidLow: 17106066549027818264
+      m_GuidHigh: 13244347213873272968
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Assassin
+    m_Texture: {fileID: 2800000, guid: fefecb18f4e4ed6488d8d9949e5fcdb7, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5462346340735337443
+      m_GuidHigh: 2926070637122755756
+    m_SerializedTextureGuid:
+      m_GuidLow: 3761660938067906070
+      m_GuidHigh: 7483657048071151225
+    m_Size: {x: 0, y: 0}
+    m_SpecifySize: 0
+    m_Name: Guardian
+    m_Texture: {fileID: 2800000, guid: 6b000e161ab13434791e21636f4adb67, type: 3}

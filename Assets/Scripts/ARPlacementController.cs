@@ -6,6 +6,9 @@ public class ARPlacementController : MonoBehaviour
     [SerializeField] private ARTrackedImageManager trackedImageManager;
     [SerializeField] private GameObject arenaHubPrefab;
     
+    [Header("Spawn Settings")]
+    [SerializeField] private float characterScale = 1f;
+    
     private GameObject spawnedArenaHub;
 
     private void OnEnable()
@@ -25,8 +28,11 @@ public class ARPlacementController : MonoBehaviour
         {
             if (spawnedArenaHub == null)
             {
-                // Spawn the anchor game object directly at the physical card's position and rotation
+                // Spawn the anchor game object directly at the physical card's position
                 spawnedArenaHub = Instantiate(arenaHubPrefab, trackedImage.transform.position, trackedImage.transform.rotation);
+                
+                // Set the scale of the spawned character/hub
+                spawnedArenaHub.transform.localScale = Vector3.one * characterScale;
             }
         }
 
@@ -37,7 +43,12 @@ public class ARPlacementController : MonoBehaviour
             {
                 // Dynamically snap the arena anchor to the card if it shifts slightly in real life
                 spawnedArenaHub.transform.position = trackedImage.transform.position;
+                
+                // Ensure the rotation matches the marker, which is assumed to be lying flat on the surface
                 spawnedArenaHub.transform.rotation = trackedImage.transform.rotation;
+                
+                // Ensure scale is maintained (in case it gets modified in the inspector during runtime)
+                spawnedArenaHub.transform.localScale = Vector3.one * characterScale;
             }
         }
     }
